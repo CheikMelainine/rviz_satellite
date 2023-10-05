@@ -43,7 +43,7 @@ Visualization Manager:
       Draw Behind: false
       Enabled: true
       Name: AerialMapDisplay
-      Object URI: https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png
+      Object URI: https://tile.openstreetmap.org/{z}/{x}/{y}.png
       Topic: /gps/fix
       Value: true
       Map transform type: Explicit UTM Frame
@@ -53,7 +53,7 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        base_link:
+        odom:
           Value: true
         map:
           Value: true
@@ -64,7 +64,7 @@ Visualization Manager:
       Show Names: true
       Tree:
         map:
-          base_link:
+          odom:
             {}
       Update Interval: 0
       Value: true
@@ -72,7 +72,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:

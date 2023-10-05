@@ -1,10 +1,15 @@
+<?xml version="1.0"?>
 <launch>
+<!-- Standalone launcher to visualize the robot model. -->
+  <include file="$(find husky_description)/launch/description.launch">
+  </include>
+  <!--node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" /-->
     <!-- Send a static GPS fix to every new subscriber. Edit latitude and longitude in launch/demo.gps to use your own position. -->
     <node pkg="rostopic" type="rostopic" name="fake_gps_fix" args="pub /gps/fix sensor_msgs/NavSatFix --latch --file=$(find rviz_satellite)/launch/demo.gps" />
 
     <!-- Start rviz with a pre-configured AerialMap instance. It will use the fake GPS fix from above. -->
     <node pkg="rviz" type="rviz" name="rviz" args="-d $(find rviz_satellite)/launch/demo.rviz"/>
-
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
     <!-- Static fake TF transform -->
-    <node pkg="tf2_ros" type="static_transform_publisher" name="static_tf_fake" args="100 200 5 0.3 0 0 map base_link" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="static_tf_fake" args="0 0 0.1651 0 0 0 map odom_gps" />
 </launch>
